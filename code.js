@@ -7,4 +7,4 @@ const formArticles = document.querySelector('form')
 const description = document.getElementById('description')
 const presto = document.getElementById('presto')
 const stock = document.getElementById('stock')
-let opcion = ''
+let opcion = ''d
