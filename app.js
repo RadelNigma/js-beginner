@@ -258,14 +258,18 @@ const fetchData = fetch(url).then(
                             temp += "<td>" + u.lastName + "</td>"
                             temp += "<td>" + u.age + "</td>"
                             temp += "<td>" + u.email + "</td>"
-                            temp1 = ''
+                            let temp1 = ""
                             u.roles.forEach(r => {
                                 temp1 += r.name.replace('ROLE_', '') + ' '
                             })
                             temp += "<td>" + temp1 + "</td>"
                             temp += "<td>" +
-                                `<button type = "button" className = "btn btn-info btn-sm text-white" data-bs-toggle = "modal" 
-                            data-bs-target="#editUserModal${u.id}">Edit</button>`
+                                `<button type = "button" class = "btn btn-info btn-sm text-white" data-bs-toggle = "modal" 
+                            data-bs-target="#editUserModal">Edit</button>`
+                                +"</td>"
+                            temp += "<td>" +
+                                `<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                             data-bs-target="#deleteModal">Delete</button>`
                                 +"</td>"
                         })
                         document.getElementById('data').innerHTML = temp
@@ -274,15 +278,63 @@ const fetchData = fetch(url).then(
             )
         }
     )
-//     < td >
-//     < !--Button Edit user modal-- >
-// < button type = "button" className = "btn btn-info btn-sm text-white" data - bs - toggle = "modal"
-// th:attr = "data-bs-target='#editUserModal' + ${user.getId()}" > Edit < /button>
-// </td>
-// <td>
-//     <!-- Button Delete modal data-bs-target="#deleteModal" -->
-//     <button type="button" className="btn btn-danger btn-sm"
-//             data-bs-toggle="modal"
-//             th:attr="data-bs-target='#deleteModal' + ${user.getId()}">Delete
-//     </button>
-// </td>
+
+let deleteForm =
+     `<div class = "mb-3">
+         <label for = "id_delete" class = "label">ID</label>
+         <input readOnly type="number" class = "form-control" id = "id_delete" th:value="*{id}" name="id">
+      </div>
+      <div class="mb-3">
+         <label for = "first_name_delete" class = "label">First name</label>
+         <input readOnly type="text" class = "form-control" id="first_name_delete" th:value="*{firstName}"
+          name="firstName">
+      </div>
+    `
+// <div className="mb-3">
+//     <label htmlFor="last_name_delete" className="label">Last
+//         name</label>
+//     <input readOnly type="text" className="form-control"
+//            id="last_name_delete" th:value="*{lastName}"
+//            name="lastName">
+// </div>
+// <div className="mb-3">
+//     <label htmlFor="age_delete" className="label">Age</label>
+//     <input readOnly type="number" className="form-control" id="age_delete"
+//            th:value="*{age}" name="age">
+// </div>
+// <div className="mb-3">
+//     <label htmlFor="email_delete" className="label ">Email
+//         address</label>
+//     <input readOnly type="email" className="form-control" id="email_delete"
+//            th:value="*{email}" name="email"
+//            aria-describedby="emailHelp">
+// </div>
+// <div className="mb-3">
+//     <label htmlFor="roles_delete" className="label">Roles</label>
+//     <select disabled id="roles_delete" name="roles" multiple className="form-select" size="2"
+//             aria-label="size 2 select">
+//         <option th:each="role:${roles}"
+//                 th:value="${role.id}"
+//                 th:text="${role.getRoleName()}"
+//                 th:selected="${userDelete.getRolesName().contains(role.getRoleName())}">
+//         </option>
+//     </select>
+// </div>
+document.getElementById('delete_user_form').innerHTML = deleteForm
+
+
+
+// const link = heading3.querySelector('a')
+//
+// link.addEventListener('click', (event)=>{
+//     event.preventDefault()
+//     console.log('Click on link', event.target.getAttribute('href'))
+//     const url = event.target.getAttribute('href')
+//
+//     window.location=url
+// })
+//
+// document.getElementById("id-checkbox").addEventListener("click", (event) => {
+//     document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+//     event.preventDefault();
+// }, false);
