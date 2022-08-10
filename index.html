@@ -2,30 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JavaScript</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .class1{
+            width: 200px;
+            height: 200px;
+            background: blueviolet;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1 id="hello" class="heading">Hello World!</h1>
-<!--<h2 id="sub-hello" class="h2-class">This is heading 2</h2>-->
-<!--<h2><a href="https://developer.mozilla.org/ru/docs/Web/Events" target="_blank">Anothe h2</a> </h2>-->
-<!--<input type="button" id="inbutton" value="TTTT">-->
-<!--<div id="text">Текст</div>-->
-<div class="container">
-<table class="table table-striped">
-    <thead>
-    <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Age</th><th>Email</th></tr>
-    </thead>
-    <tbody id="data">
-    </tbody>
-</table>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-<script src="app.js"></script>
+    <button id="btnButton">Button</button>
+    <input id="input1" type="text" value="50">
+    <div class="class1">Case 1</div>
+    <div class="class1">Case 2</div>
+
+    <script>
+        let tag = document.getElementById('btnButton')
+        // console.log(tag.innerHTML)
+
+        let input1 = document.getElementById('input1')
+        // console.log(input1.value)
+
+        let class1 = document.getElementsByClassName('class1')
+        // console.log(class1[1])
+        class1[0].style.backgroundColor = 'blue'
+
+        console.log(document.querySelector('.class1'))
+
+        btnButton.addEventListener('mouseover', (e)=>{
+            alert('EVENTO')
+        })
+
+
+    </script>
 </body>
 </html>
